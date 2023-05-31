@@ -1,40 +1,17 @@
 const { useState, useEffect } = React;
 import searchYouTube from '../lib/searchYouTube.js';
-const debounce = lodash.debounce;
-
-// import debounce from '../node_modules/lodash.debounce';
-// import debounce from '../node_modules/lodash.debounce';
 
 var Search = ({setVideoList}) => {
-//We will use this state to store the user's input.
-  const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    searchYouTube(searchTerm, setVideoList);
-  }, [searchTerm]);
-
-  // useEffect(() => {
-  //   const debouncedSearch = debounce(handleSearch, 500);
-
-  //   debouncedSearch(searchTerm);
-
-
-  //   return () => {
-  //     debouncedSearch.cancel();
-  //   };
-  // }, [searchTerm, handleSearch]);
+  var debouncedSearch = _.debounce(searchYouTube, 500);
 
   const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const debouncedHandleChange = (event) => {
-    debounce(handleChange, 500);
+    debouncedSearch(event.target.value, setVideoList);
   };
 
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text" value={searchTerm} onChange={debouncedHandleChange} />
+      <input className="form-control" type="text" onChange={handleChange}/>
     </div>
   );
 };

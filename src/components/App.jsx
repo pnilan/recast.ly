@@ -13,12 +13,12 @@ import searchYouTube from '../lib/searchYouTube.js';
 
 var App = () => {
 
-  // const [videoList, setVideoList] = useState([]);
-  // const [video, setVideo] = useState({});
-  const [videoList, setVideoList] = useState(exampleVideoData);
+  const [videoList, setVideoList] = useState([]);
   const [video, setVideo] = useState(exampleVideoData[0]);
 
-
+  useEffect(() => {
+    searchYouTube('', setVideoList);
+  }, []);
 
   return (
     <div>
