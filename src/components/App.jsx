@@ -1,8 +1,9 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 import exampleVideoData from '../data/exampleVideoData.js';
 import Search from './Search.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import searchYouTube from '../lib/searchYouTube.js';
 
 // App
 // || => Search
@@ -12,12 +13,12 @@ import VideoPlayer from './VideoPlayer.js';
 
 var App = () => {
 
+  // const [videoList, setVideoList] = useState([]);
+  // const [video, setVideo] = useState({});
   const [videoList, setVideoList] = useState(exampleVideoData);
   const [video, setVideo] = useState(exampleVideoData[0]);
 
-  // var selectVideo = function(videoListEntry) {
-  //   setVideo(videoListEntry);
-  // };
+
 
   return (
     <div>
