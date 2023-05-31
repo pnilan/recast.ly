@@ -1,42 +1,37 @@
+const { useState } = React;
 import exampleVideoData from '../data/exampleVideoData.js';
 import Search from './Search.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-// import React, { useState } from 'react';
 
 // App
 // || => Search
 // || => VideoPlayer
 // || => VideoList
 //         || => VideoListEntry
-//
 
-// import VideoList from './VideoList';
 var App = () => {
 
+  const [videoList, setVideoList] = useState(exampleVideoData);
   const [video, setVideo] = useState(exampleVideoData[0]);
 
-  // 1. Set up useState hook for video to pass
-  // down to VideoPlayer component
-  // 2. Create 'play video' function that
-  // invokes setVideo with clicked video
-  // list entry
+  // var selectVideo = function(videoListEntry) {
+  //   setVideo(videoListEntry);
+  // };
 
   return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <Search />
+          <Search setVideoList={setVideoList} />
         </div>
       </nav>
       <div className="row">
         <div className="col-md-7">
-          <VideoPlayer video={video}/>
-
+          <VideoPlayer video={video} />
         </div>
         <div className="col-md-5">
-          {/* changed this */}
-          <VideoList videos={exampleVideoData} />
+          <VideoList videos={videoList} handleClick={setVideo} />
         </div>
       </div>
     </div>

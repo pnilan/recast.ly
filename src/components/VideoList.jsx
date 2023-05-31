@@ -1,13 +1,11 @@
+import VideoListEntry from './VideoListEntry.js';
 
 
-import VideoListEntry from './videoListEntry.js';
-
-
-var VideoList = ({ videos }) => (
+var VideoList = ({ videos, handleClick }) => (
   <div className="video-list">
 
     {videos.map((video) => (
-      <VideoListEntry key={video.id.videoId} video={video} />
+      <VideoListEntry key={video.id.videoId} video={video} handleClick={handleClick} />
     ))}
 
     {/* {videos.forEach((video) => (
