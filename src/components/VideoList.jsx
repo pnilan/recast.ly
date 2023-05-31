@@ -1,10 +1,18 @@
-var VideoList = () => (
+
+
+import VideoListEntry from './videoListEntry.js';
+
+
+var VideoList = ({ videos }) => (
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+
+    {videos.map((video) => (
+      <VideoListEntry key={video.id.videoId} video={video} />
+    ))}
+
+    {/* {videos.forEach((video) => (
+      <VideoListEntry key={video.id.videoId} video={video} />
+    ))} */}
   </div>
 );
 
