@@ -8,6 +8,7 @@ import searchYouTube from '../lib/searchYouTube.js';
 // App
 // || => Search
 // || => VideoPlayer
+//         || => VideoDetails
 // || => VideoList
 //         || => VideoListEntry
 
